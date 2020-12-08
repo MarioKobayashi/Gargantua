@@ -1,22 +1,16 @@
 fileFormatVersion: 2
-guid: 8941c9e73cbe54e00bde76d42f3d8a9b
+guid: 4c284fe59719044a59d851a12e74ec9b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5272401415994956661
-    second: 32_0
+      213: -4305308449946096505
+    second: ufo_fire_0
   - first:
-      213: 4771508795608079770
-    second: 32_0
+      213: -3846093977376908412
+    second: ufo_fire_0
   - first:
-      213: -1132588812051559309
-    second: 32_1
-  - first:
-      213: 7908017303540568794
-    second: 32_2
-  - first:
-      213: 4379946490168874402
-    second: 32_3
+      213: 8483953546711189685
+    second: ufo_fire_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -125,85 +119,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 32_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a9d1fd418fdc73240800000000000000
-      internalID: 4771508795608079770
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 32_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 37cc515e97c3840f0800000000000000
-      internalID: -1132588812051559309
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 32_2
+      name: ufo_fire_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 16
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad29d2fc6dbeebd60800000000000000
-      internalID: 7908017303540568794
+      spriteID: 48b1ea1b7edef9ac0800000000000000
+      internalID: -3846093977376908412
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 32_3
+      name: ufo_fire_1
       rect:
         serializedVersion: 2
         x: 16
         y: 0
         width: 16
-        height: 16
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a51cb97022b8cc30800000000000000
-      internalID: 4379946490168874402
+      spriteID: 5b8c2a20dce0db570800000000000000
+      internalID: 8483953546711189685
       vertices: []
       indices: 
       edges: []
