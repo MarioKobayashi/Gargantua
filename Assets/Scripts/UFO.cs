@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
- // UFOのコンポーネント
+ // UFOの移動制御のコンポーネント
 public class UFO : MonoBehaviour
 {
     //rigidbodyコンポーネントの変数
@@ -36,6 +36,28 @@ public class UFO : MonoBehaviour
 
     void Start()
     {
+        
+
+        //アフターバーナーが付いていない時の例外処理
+        if(injectionLeft == null)
+        {
+            this.injectionLeft = GameObject.Find("injection_Left");
+            Debug.Log("nullあり");
+        }
+
+        if (injectionRight == null)
+        {
+            this.injectionRight = GameObject.Find("injection_Right");
+            Debug.Log("nullあり");
+        }
+
+        if (injectionUp == null)
+        {
+            this.injectionUp = GameObject.Find("injection_Up");
+            Debug.Log("nullあり");
+        }
+
+
         //rigidbody2Dコンポーネントを取得し、rigid2D変数へ代入
         this.rigid2D = GetComponent<Rigidbody2D>();
 
@@ -43,28 +65,28 @@ public class UFO : MonoBehaviour
         this.injectionLeft.SetActive(false);
         this.injectionRight.SetActive(false);
         this.injectionUp.SetActive(false);
-        
     }
 
     
     void Update()
     {
-        
-
-        //左右矢印を押していない間はKeyを0にする
-        Key = 0;
-
-        //上矢印を押していない間はupKeyを0にする
-        upKey = 0;
-
         //右矢印を押している間
         if (Input.GetKey(KeyCode.RightArrow)) Key = 1;
+
+        //右矢印を離した瞬間
+        if (Input.GetKeyUp(KeyCode.RightArrow)) Key = 0;
        
         //左矢印を押している間
         if (Input.GetKey(KeyCode.LeftArrow)) Key = -1;
 
+        //左矢印を離した瞬間
+        if (Input.GetKeyUp(KeyCode.LeftArrow)) Key = 0;
+
         //上矢印を押している間
         if (Input.GetKey(KeyCode.UpArrow)) upKey = 1;
+
+        //上矢印を離した瞬間
+        if (Input.GetKeyUp(KeyCode.UpArrow)) upKey = 0;
 
         //Keyが0の時左右の炎を消す
         if (Key == 0)
@@ -97,6 +119,7 @@ public class UFO : MonoBehaviour
 
     void FixedUpdate()
     {
+        
 
         //Keyをそのまま使うとエラーが出るので下記の変数にKeyを代入
         int direction_x = Key;
@@ -145,5 +168,42 @@ public class UFO : MonoBehaviour
 
     }
 
+    //*********ボタン関連の関数********
+
+    //左ボタンを押している間
+    public void LButtonDown()
+    {
+        Key = -1; 
+    }
+
+    //左ボタンを離した瞬間
+    public void LButtonUP()
+    {
+        Key = 0;
+    }
+
+    //左ボタンを押している間
+    public void RButtonDown()
+    {
+        Key = 1;
+    }
+
+    //左ボタンを離した瞬間
+    public void RButtonUP()
+    {
+        Key = 0;
+    }
+
+    public void UpButtonDown()
+    {
+        upKey = 1;
+    }
+
+    //左ボタンを離した瞬間
+    public void UpButtonUP()
+    {
+        upKey = 0;
+    }
+    //*********ボタン関連の関数********
 
 }

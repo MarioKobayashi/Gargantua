@@ -7,6 +7,15 @@ public class CameraCon : MonoBehaviour
 {
     public GameObject UFO;
 
+    private void Start()
+    {
+        if(UFO == null)
+        {
+            this.UFO = GameObject.Find("UFO");
+            Debug.Log("nullあり");
+        }
+    }
+
     void LateUpdate()
     {
         //UFOがいない場合処理は終了する
