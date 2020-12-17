@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: injectionFire_up_anima
+  m_Name: missileAnima
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,10 +20,10 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 6727024943380678505, guid: 258d59d7b4f514a8ba40ea00f6a216d6,
+      value: {fileID: 7525356460718208180, guid: 0668dddd94b0243b4bdd8503a4f82555,
         type: 3}
     - time: 0.083333336
-      value: {fileID: -2980012232197774832, guid: 258d59d7b4f514a8ba40ea00f6a216d6,
+      value: {fileID: -1924111824514003221, guid: 0668dddd94b0243b4bdd8503a4f82555,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -44,8 +44,8 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 6727024943380678505, guid: 258d59d7b4f514a8ba40ea00f6a216d6, type: 3}
-    - {fileID: -2980012232197774832, guid: 258d59d7b4f514a8ba40ea00f6a216d6, type: 3}
+    - {fileID: 7525356460718208180, guid: 0668dddd94b0243b4bdd8503a4f82555, type: 3}
+    - {fileID: -1924111824514003221, guid: 0668dddd94b0243b4bdd8503a4f82555, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
