@@ -145,6 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 175380ecc1dbf417eb4d2c30297bbdca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  missileBomb: {fileID: 8698782981685841141, guid: df82db0b49a2b43d3b007867672d16a8,
+    type: 3}
   MISSILE_LIFE_TIME: 4
   moveSpeed: 4
 --- !u!95 &-4221648845377047436

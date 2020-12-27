@@ -7,6 +7,9 @@ public class Missile : MonoBehaviour
 {
     Transform transf_missile;
 
+    //パーティクルゲームオブジェクト
+    public GameObject missileBomb;
+
     //ミサイルの発射からの持続時間
     public float MISSILE_LIFE_TIME = 4;
 
@@ -24,7 +27,22 @@ public class Missile : MonoBehaviour
     Vector3 attackPos;
 
     //ミサイルの回転角度
-    float angle;
+    float angle;  
+
+    private void Update()
+    {
+        transf_missile.eulerAngles = new Vector3(0, 0, angle);
+        //弾の移動
+        transf_missile.position += new Vector3(attackPos.x, attackPos.y, 0).normalized * moveSpeed * Time.deltaTime;
+
+        //弾の持続時間をカウント
+        missileLifeTimer -= Time.deltaTime;
+        //一定時間経過後、非アクティブにする
+        if (missileLifeTimer < 0) this.gameObject.SetActive(false);
+
+    }
+
+
 
     public void Init(Vector3 startPos)
     {
@@ -51,18 +69,7 @@ public class Missile : MonoBehaviour
         this.attackPos = Utils.GetDirection(angle);
     }
 
-    private void Update()
-    {
-        transf_missile.eulerAngles = new Vector3(0, 0, angle);
-        //弾の移動
-        transf_missile.position += new Vector3(attackPos.x, attackPos.y, 0).normalized * moveSpeed * Time.deltaTime;
-        
-        //弾の持続時間をカウント
-        missileLifeTimer -= Time.deltaTime;
-        //一定時間経過後、非アクティブにする
-        if (missileLifeTimer < 0) this.gameObject.SetActive(false);
-     
-    }
+    
 
 
     private void OnTriggerEnter2D(Collider2D coll)
@@ -74,6 +81,11 @@ public class Missile : MonoBehaviour
         }
 
         this.gameObject.SetActive(false);
+        //ミサイルパーティクル生成(オブジェクトプールが難しいので取り敢えずこれで)
+        GameObject Part = Instantiate(missileBomb, transform.position, Quaternion.identity) as GameObject;
+        Destroy(Part, 1.0f);
+        
+        
 
 
 

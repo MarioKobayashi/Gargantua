@@ -15,7 +15,11 @@ public class MissileGenerator : MonoBehaviour
     //備蓄しておく弾の数
     public int MAX_MISSILE;
 
+    
     Missile missile;
+
+    //カメラシェイクコンポーネント
+    public CameraShake shake;
 
     //ミサイル発射間隔のon/off
     private bool missileBool  = true;
@@ -57,6 +61,8 @@ public class MissileGenerator : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
+                shake.Shake(0.1f, 0.1f);
+
                 FireMissile(ufoPos);
                 missileBool = false;
                 StartCoroutine(MissileStop());

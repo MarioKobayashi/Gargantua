@@ -27,6 +27,5 @@ public class CameraCon : MonoBehaviour
 
         //gameObject(カメラ)をUFOに追従させる
         gameObject.transform.position = new Vector3(ufoPos.x, ufoPos.y, -10);
-    
     }
 }
