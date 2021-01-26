@@ -14,6 +14,7 @@ public class CameraShake : MonoBehaviour
 
     private IEnumerator DoShake(float duration, float magnitude)
     {
+        
         CameraCon.enabled = false;
 
         Vector3 pos = transform.localPosition;

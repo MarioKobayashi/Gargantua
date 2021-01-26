@@ -83,7 +83,7 @@ public class Missile : MonoBehaviour
         this.gameObject.SetActive(false);
         //ミサイルパーティクル生成(オブジェクトプールが難しいので取り敢えずこれで)
         GameObject Part = Instantiate(missileBomb, transform.position, Quaternion.identity) as GameObject;
-        Destroy(Part, 1.0f);
+        Destroy(Part, 0.5f);
         
         
 

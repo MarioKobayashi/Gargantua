@@ -13,7 +13,7 @@ public class move : MonoBehaviour
 
         if(transform.position.x > 5)
         {
-            transform.position = new Vector3(0, 0, 0);
+            transform.position = new Vector3(0, 3, 0);
         }
     }
 }

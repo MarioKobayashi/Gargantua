@@ -19,7 +19,7 @@ public class CameraCon : MonoBehaviour
     void LateUpdate()
     {
         //UFOがいない場合処理は終了する
-        if (!UFO) return;
+        if (!UFO.activeSelf) return;
 
         //UFOが存在する場合、UFOに追従する
         //UFOのポジションをufoPosへ代入する

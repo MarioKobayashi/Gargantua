@@ -36,10 +36,9 @@ public class UFO : MonoBehaviour
 
     void Start()
     {
-        
 
         //アフターバーナーが付いていない時の例外処理
-        if(injectionLeft == null)
+        if (injectionLeft == null)
         {
             this.injectionLeft = GameObject.Find("injection_Left");
             Debug.Log("nullあり");
@@ -173,7 +172,8 @@ public class UFO : MonoBehaviour
     //左ボタンを押している間
     public void LButtonDown()
     {
-        Key = -1; 
+        Key = -1;
+        
     }
 
     //左ボタンを離した瞬間

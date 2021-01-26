@@ -18,8 +18,7 @@ public class MissileGenerator : MonoBehaviour
     
     Missile missile;
 
-    //カメラシェイクコンポーネント
-    public CameraShake shake;
+    
 
     //ミサイル発射間隔のon/off
     private bool missileBool  = true;
@@ -61,7 +60,6 @@ public class MissileGenerator : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                shake.Shake(0.1f, 0.1f);
 
                 FireMissile(ufoPos);
                 missileBool = false;
