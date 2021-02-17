@@ -34,8 +34,12 @@ public class UFO : MonoBehaviour
     public GameObject injectionRight;
     public GameObject injectionUp;
 
+    public static UFO ufo;
+
     void Start()
     {
+        //どこからでもUFOのスクリプトへアクセス出来る
+        ufo = this;
 
         //アフターバーナーが付いていない時の例外処理
         if (injectionLeft == null)

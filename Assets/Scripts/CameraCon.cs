@@ -9,6 +9,7 @@ public class CameraCon : MonoBehaviour
 
     private void Start()
     {
+
         if(UFO == null)
         {
             this.UFO = GameObject.Find("UFO");

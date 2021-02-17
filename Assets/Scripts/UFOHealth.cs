@@ -51,15 +51,15 @@ public class UFOHealth : MonoBehaviour
         if (coll.gameObject.tag == "DAMAGE")
         {
 
-            if (HP == 1)
+            if (HP >= 1)
             {
-                StartCoroutine(WaitRealTime());
+                StartCoroutine(WaitRealTime(1.0f));
                 StartCoroutine(MutekiRealTime());
             }
 
             if(HP == 0)
             {
-                this.gameObject.SetActive(false);
+                StartCoroutine(WaitRealTime(10f));
                 //残機を1減らす
                 SceneController.zanki -= 1;
             }
@@ -70,21 +70,29 @@ public class UFOHealth : MonoBehaviour
 
     }
 
-    //ダメージを受けた時に画面が一瞬ストップする
-    private IEnumerator WaitRealTime()
+    //ダメージを受けた時に画面が一瞬ストップする(死んだ時と分岐)
+    private IEnumerator WaitRealTime(float partTime)//引数はパーティクル持続時間
     {
             //時を止める
             Time.timeScale = 0;
-            //0.5s待つ
+            //0.3s待つ
             yield return new WaitForSecondsRealtime(stopTime);
         　　 //時を再開
             Time.timeScale = 1;
             shake.Shake(0.2f, 0.2f);
             //パーティクル作成
             GameObject Part = Instantiate(missileBomb, transform.position, Quaternion.identity) as GameObject;
-            Destroy(Part, 1.0f);
+            Destroy(Part, partTime);
+
+        if(HP >= 1)
+        {
             //HPが1になった時、スプライトを変える
             this.Renderer.sprite = UFO_NO_ARMOUR;
+        }else if(HP == 0)
+        {　　//ゲームオーバー(UFOを消す)
+            this.gameObject.SetActive(false);
+        }
+            
     }
 
     //UFOの無敵状態

@@ -9,17 +9,22 @@ public class SceneController : MonoBehaviour
     //現在のシーン名
     private string SceneName;
     //初期の残機数
-    public static int zanki = 1;
+    public static int zanki = 0;
     //初期の残機数の記録の為の変数
     private int CurrentZanki;
+
+    public LightController lightCon;
+
+    //タイトルシーン
+    string TitleScene = "TitleScene";
 
     private void Start()
     {
         //現在のシーン名を取得
         this.SceneName = SceneManager.GetActiveScene().name;
+
         //初期の残機数を記録変数へ代入
         CurrentZanki = zanki;
-        
     }
 
     private void Update()
@@ -33,23 +38,32 @@ public class SceneController : MonoBehaviour
             
             //現在シーンの初期位置へ戻る
             StartCoroutine(SceneChange(SceneName));
-            //Debug.Log(zanki);
-
             }
 
             //残機数が無くなった場合
             if(zanki < 0)
             {
-                
-            StartCoroutine(SceneChange("TitleScene"));
-            //Debug.Log(zanki);
+            StartCoroutine(SceneChangeTitle(TitleScene));
             }
     }
 
+    //残機がある場合の画面遷移
     private IEnumerator SceneChange(string scene)
     {
-        
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1f);
+        lightCon.fadeIn = true;
+
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(scene);
+    }
+
+    //残機が無くなった場合の画面遷移
+    private IEnumerator SceneChangeTitle(string scene)
+    {
+        yield return new WaitForSeconds(4f);
+        lightCon.fadeIn = true;
+
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(scene);
     }
 
