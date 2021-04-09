@@ -10,10 +10,6 @@ public class Button : MonoBehaviour
 
     public float PushColor;
 
-    public float alpha;
-
-    private bool tweenOn = true; //アニメーションを一度だけ実行する為の変数
-
     private void Start()
     {
 
@@ -24,20 +20,6 @@ public class Button : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        //UFOが画面から消えたら
-        if (!UFO.ufo.gameObject.activeSelf && SceneController.zanki < 0)
-        {
-            if(tweenOn == true)
-            {
-                image.DOFade(0, 1f).SetEase(Ease.Linear).SetLink(gameObject);
-                tweenOn = false;
-            }
-            
-           
-        }
-    }
 
     //ボタンを押している間
     public void ButtonDonw()

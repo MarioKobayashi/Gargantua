@@ -13,9 +13,7 @@ public class UFOHealth : MonoBehaviour
     public bool on_damage = false; //ダメージを受けてる最中かどうか
     public CameraShake shake;
     public GameObject missileBomb; //パーティクルゲームオブジェクト
-    [SerializeField] private float stopTime = 0.3f;
     [SerializeField] private float mutekiTime = 1.0f;
-    
 
     private void Awake()
     {
@@ -26,6 +24,8 @@ public class UFOHealth : MonoBehaviour
             this.shake = GameObject.Find("Main Camera").GetComponent<CameraShake>();
             Debug.Log("nullあり");
         }
+
+        
     }
 
     
@@ -53,13 +53,13 @@ public class UFOHealth : MonoBehaviour
 
             if (HP >= 1)
             {
-                StartCoroutine(WaitRealTime(1.0f));
+                Damage(1.0f);
                 StartCoroutine(MutekiRealTime());
             }
 
             if(HP == 0)
             {
-                StartCoroutine(WaitRealTime(10f));
+                Damage(10f);
                 //残機を1減らす
                 SceneController.zanki -= 1;
             }
@@ -71,15 +71,10 @@ public class UFOHealth : MonoBehaviour
     }
 
     //ダメージを受けた時に画面が一瞬ストップする(死んだ時と分岐)
-    private IEnumerator WaitRealTime(float partTime)//引数はパーティクル持続時間
+    public void Damage(float partTime)//引数はパーティクル持続時間
     {
-            //時を止める
-            Time.timeScale = 0;
-            //0.3s待つ
-            yield return new WaitForSecondsRealtime(stopTime);
-        　　 //時を再開
-            Time.timeScale = 1;
-            shake.Shake(0.2f, 0.2f);
+ 
+            shake.Shake(0.2f, 0.5f);
             //パーティクル作成
             GameObject Part = Instantiate(missileBomb, transform.position, Quaternion.identity) as GameObject;
             Destroy(Part, partTime);
@@ -101,7 +96,7 @@ public class UFOHealth : MonoBehaviour
         //ダメージ中状態をonにする
         on_damage = true;
         //規定秒数点滅させる
-        yield return new WaitForSecondsRealtime(stopTime + mutekiTime);
+        yield return new WaitForSeconds(mutekiTime);
         //ダメージ中状態をoffにする
         on_damage = false;
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    public CameraCon CameraCon;
+     CameraCon cameraCon;
 
     //カメラシェイク
     public void Shake(float duration, float magnitude)
@@ -14,8 +14,12 @@ public class CameraShake : MonoBehaviour
 
     private IEnumerator DoShake(float duration, float magnitude)
     {
-        
-        CameraCon.enabled = false;
+        if(cameraCon == null)
+        {
+            cameraCon = gameObject.GetComponent<CameraCon>();
+            
+        }
+        cameraCon.enabled = false;
 
         Vector3 pos = transform.localPosition;
 
@@ -23,6 +27,7 @@ public class CameraShake : MonoBehaviour
 
         while (elapsed < duration)
         {
+
             float x = pos.x + Random.Range(-1f, 1f) * magnitude;
             float y = pos.y + Random.Range(-1f, 1f) * magnitude;
 
@@ -30,10 +35,17 @@ public class CameraShake : MonoBehaviour
 
             elapsed += Time.deltaTime;
 
+            if(Time.timeScale == 0)//タイムスケールが止まった場合は処理を中止
+            {
+                yield break;
+            }
+
             yield return null;
         }
         transform.localPosition = pos;
-        CameraCon.enabled = true;
+        cameraCon.enabled = true;
 
     }
+
+    
 }

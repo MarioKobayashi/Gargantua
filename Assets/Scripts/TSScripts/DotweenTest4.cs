@@ -45,24 +45,4 @@ public class DotweenTest4 : MonoBehaviour
             seq.Restart();
         }
     }
-
-
-
-
-    private IEnumerator DD(string dd)
-    {
-        yield return new WaitForSeconds(1f);
-
-        Debug.Log(dd);
-        Keisan(1, 2);
-        int c = Keisan(1, 2);
-        yield return new WaitForSeconds(1f);
-        Debug.Log(c);
-    }
-
-    public int Keisan(int a , int b)
-    {
-        return a + b;
-        
-    }
 }

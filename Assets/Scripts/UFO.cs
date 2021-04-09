@@ -36,8 +36,12 @@ public class UFO : MonoBehaviour
 
     public static UFO ufo;
 
+    //どのオブジェクトからもUFOの座標を取得できる
+    public static Vector3 UFOPOS;
+
     void Start()
     {
+        
         //どこからでもUFOのスクリプトへアクセス出来る
         ufo = this;
 
@@ -73,6 +77,9 @@ public class UFO : MonoBehaviour
     
     void Update()
     {
+        //どのオブジェクトからもUFOの座標を取得できる座標を更新
+        UFOPOS = transform.position;
+        
         //右矢印を押している間
         if (Input.GetKey(KeyCode.RightArrow)) Key = 1;
 

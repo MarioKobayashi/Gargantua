@@ -7,35 +7,26 @@ public class MissileGenerator : MonoBehaviour
     //エディタから弾として使うプレハブを設定
     public GameObject pf_missile;
 
-    //UFOのトランスフォーム
-    public GameObject ufo;
-
     //弾を備蓄しておくList
     List<Missile> list_missile = new List<Missile>();
     //備蓄しておく弾の数
     public int MAX_MISSILE;
 
-    
     Missile missile;
-
-    
 
     //ミサイル発射間隔のon/off
     private bool missileBool  = true;
     //ミサイルの発射間隔の秒数
     public float missileTime;
 
-    
+    GameObject missileBox;
+
+
+
 
     private void Start()
     {
-        if (ufo == null)
-        {
-            this.ufo = GameObject.Find("UFO");
-            Debug.Log("nullあり");
-        }
-
-        
+         missileBox = new GameObject("missileBox");//ミサイルを貯蓄する空のオブジェクト
 
 
         //最初に一定数の弾を備蓄しておく
@@ -44,7 +35,7 @@ public class MissileGenerator : MonoBehaviour
             //弾の生成
             this.missile = Instantiate(pf_missile).GetComponent<Missile>();
             //弾をミサイルジェネレーターオブジェクトの子にする
-            missile.transform.parent = this.transform;
+            missile.transform.parent = missileBox.transform;
             //発車前は非アクティブにする
             missile.gameObject.SetActive(false);
             //Listに追加
@@ -56,7 +47,7 @@ public class MissileGenerator : MonoBehaviour
     {
         if(missileBool)
         {
-            Vector3 ufoPos = this.ufo.transform.position;
+            Vector3 ufoPos = UFO.UFOPOS;
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -85,7 +76,7 @@ public class MissileGenerator : MonoBehaviour
         }
         //弾が全てtrueの場合は新たにオブジェクトを１つ生成してリストに追加する
         this.missile = Instantiate(pf_missile).GetComponent<Missile>();
-        missile.transform.parent = this.transform;
+        missile.transform.parent = missileBox.transform;
         missile.gameObject.SetActive(false);
         list_missile.Add(missile);
         //リストの中の.Count-1で要素の末尾を取得しそれを撃つ
