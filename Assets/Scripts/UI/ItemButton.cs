@@ -15,12 +15,14 @@ public class ItemButton : MonoBehaviour
     [SerializeField]
     private GameObject ItemList = null;
 
+    [SerializeField]
+    private GameObject ItemNameText = null;
+
     CameraCon came;
 
     //アイテムボタンON
     public void ItemButtonOn()
     {
-
         if (came == null)
         {
             //この記述で最初の一度だけこの処理を行える
@@ -32,6 +34,7 @@ public class ItemButton : MonoBehaviour
 
        
         panel.SetActive(true);
+        ItemNameText.SetActive(true);
         BackButton.SetActive(true);
         //アイテムリストのグリッドレイアウトが最初のフレームで座標がずれるので1フレーム遅延させて表示させる
         StartCoroutine(AdjustTransInTheEndOfFrame());
@@ -47,6 +50,7 @@ public class ItemButton : MonoBehaviour
         panel.SetActive(false);
         BackButton.SetActive(false);
         ItemList.SetActive(false);
+        ItemNameText.SetActive(false);
         came.ZoomOut();
         
     }

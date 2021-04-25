@@ -7,15 +7,26 @@ public class MakeItemBox : MonoBehaviour
     //scritableObjectの配列
     //0 ミサイル
     //1 ボム(仮)
+    //2 シールド(仮)
+
     public ItemBoxData itemBoxData;
 
     private GameObject item;　//アイテムボックスへ入れるアイテム
+
+    private GameObject itemSave; //ゲームを中断する前に有効だったオブジェクト
 
     Transform parent;//自分自身のトランスフォーム
 
     private string itemName; //現在ItemBoxに入っているアイテムの名称
 
-    private int BUTTON = -1; //前に押されたボタン
+    
+
+    private void Awake()
+    {
+        
+        
+    }
+
 
     private void Start()
     {
@@ -25,7 +36,7 @@ public class MakeItemBox : MonoBehaviour
 
     public void NumGet(int num) //アイテム生成
     {
-        if (BUTTON == num) return; //前に押されたボタンがもう一度押された場合は何もしない
+        //if (BUTTON == num) return; //前に押されたボタンがもう一度押された場合は何もしない
 
         if (item != null)
         {
@@ -44,9 +55,9 @@ public class MakeItemBox : MonoBehaviour
         item = Instantiate(itemBoxData.Item[num], transform.position, Quaternion.identity, parent);
         item.name = itemBoxData.Item[num].name;
         itemName = item.name;
-        BUTTON = num;
+
         
         
-        
+
     }
 }

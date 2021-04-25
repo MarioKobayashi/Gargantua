@@ -33,7 +33,15 @@ public class ItemGet : MonoBehaviour
                 Destroy(gameObject);
                 
             }
-            
+
+            if (ItemNumber == "2")//シールドとの接触の場合
+            {
+                save.ShildBool = true;
+                save.SaveItem();
+                Destroy(gameObject);
+
+            }
+
         }
     }
 }

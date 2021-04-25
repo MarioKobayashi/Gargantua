@@ -10,7 +10,11 @@ public class ItemSaveData
     public bool missileBool; //初期のアイテム状態(アイテムを持っていない)
 
     public bool BombBool; //初期のアイテム状態(アイテムを持っていない)
+
+    public bool ShildBool; //初期のアイテム状態(アイテムを持っていない)
 }
+
+
 
 public class SaveManager : MonoBehaviour
 {
@@ -19,12 +23,15 @@ public class SaveManager : MonoBehaviour
 
     public bool BombBool;
 
+    public bool ShildBool;
+
     ItemSaveData itemSaveData = new ItemSaveData();//アイテムセーブデータインスタンスを取得
 
     private void Awake()
     {
         missileBool = itemSaveData.missileBool;
         BombBool = itemSaveData.BombBool;
+        ShildBool = itemSaveData.ShildBool;
     }
 
     //アイテムデータをセーブ
@@ -35,9 +42,10 @@ public class SaveManager : MonoBehaviour
         //ItemSaveData(JSON)に現在の状態を保存する
         itemSaveData.missileBool = missileBool;
         itemSaveData.BombBool = BombBool;
+        itemSaveData.ShildBool = ShildBool;
 
         string jsonstr = JsonUtility.ToJson(itemSaveData);//アイテムセーブデータをJSONに変換
-        
+
 
         writer = new StreamWriter(Application.dataPath + "/SaveFile/ItemSave.json", false);//falseはデータを上書き
 
@@ -63,9 +71,8 @@ public class SaveManager : MonoBehaviour
 
         missileBool = itemSaveData.missileBool;
         BombBool = itemSaveData.BombBool;
+        ShildBool = itemSaveData.ShildBool;
     }
-    
+
 }
-
-
 
