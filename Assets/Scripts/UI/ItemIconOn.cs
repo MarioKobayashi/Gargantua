@@ -78,8 +78,6 @@ public class ItemIconOn : MonoBehaviour
 
     private void OnEnable()
     {
-       save.RoadItem();//アイテムのセーブデータをONにする
-
         //アイテムのタイトル、説明をそれぞれ空欄にする
         ItemNameText.text = ItemDescriptionData.empty;
         ItemDescriptionText.text = "アイコンをタップして\n\nアタッチメントを選択して下さい";
@@ -91,7 +89,7 @@ public class ItemIconOn : MonoBehaviour
 
         if (num == 0)//ミサイルの場合
         {
-            if (save.missileBool)
+            if (save.missileBool == true)
             {
                 image.sprite = itemImage;
             }
@@ -100,7 +98,7 @@ public class ItemIconOn : MonoBehaviour
 
         if (num == 1)//ボムの場合
         {
-            if (save.BombBool)
+            if (save.bombBool == true)
             {
                 image.sprite = itemImage;
             }
@@ -109,7 +107,7 @@ public class ItemIconOn : MonoBehaviour
 
         if (num == 2)//シールドの場合
         {
-            if (save.ShildBool)
+            if (save.shildBool == true)
             {
                 image.sprite = itemImage;
             }
@@ -123,9 +121,15 @@ public class ItemIconOn : MonoBehaviour
     {
         wakuController.wakuNum(num);//どの枠が有効になるかを指定
 
+        if (item == null)
+        {
+            Debug.Log("null");
+        }
+
         //0番のミサイルボックス以外が押された場合はミサイルボックスを削除する
         if (num != 0)
         {
+            
                 missileBox = GameObject.Find("missileBox");
 
             if (missileBox)
@@ -146,6 +150,11 @@ public class ItemIconOn : MonoBehaviour
                 {
                     Destroy(i.gameObject);
                 }
+                if (item == null)
+                {
+                    item = GameObject.Find("ItemBox").GetComponent<MakeItemBox>();
+                }
+                item.NumDestroy();
             }
             else if (save.missileBool)//セーブデータがある場合
             {
@@ -164,7 +173,7 @@ public class ItemIconOn : MonoBehaviour
         //ボムの場合
         if (num == 1)
         {
-            if (!save.BombBool)
+            if (!save.bombBool)
             {
                 ItemNameText.text = ItemDescriptionData.empty;
                 ItemDescriptionText.text = ItemDescriptionData.empty_des;
@@ -173,8 +182,14 @@ public class ItemIconOn : MonoBehaviour
                 {
                     Destroy(i.gameObject);
                 }
+                if (item == null)
+                {
+                    item = GameObject.Find("ItemBox").GetComponent<MakeItemBox>();
+                }
+                item.NumDestroy();
+
             }
-            else if (save.BombBool)
+            else if (save.bombBool)
             {
                 ItemNameText.text = ItemDescriptionData.bomb;
                 ItemDescriptionText.text = ItemDescriptionData.bomb_des;
@@ -190,7 +205,7 @@ public class ItemIconOn : MonoBehaviour
         //シールドの場合
         if (num == 2)
         {
-            if (!save.ShildBool)
+            if (!save.shildBool)
             {
                 ItemNameText.text = ItemDescriptionData.empty;
                 ItemDescriptionText.text = ItemDescriptionData.empty_des;
@@ -199,8 +214,13 @@ public class ItemIconOn : MonoBehaviour
                 {
                     Destroy(i.gameObject);
                 }
+                if (item == null)
+                {
+                    item = GameObject.Find("ItemBox").GetComponent<MakeItemBox>();
+                }
+                item.NumDestroy();
             }
-            else if (save.ShildBool)
+            else if (save.shildBool)
             {
                 ItemNameText.text = ItemDescriptionData.shild;
                 ItemDescriptionText.text = ItemDescriptionData.shild_des;

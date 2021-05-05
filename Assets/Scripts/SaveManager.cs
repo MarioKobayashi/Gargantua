@@ -3,76 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-//アイテムを持っているかどうかを判定するJSON用クラス
-[System.Serializable]
-public class ItemSaveData
-{
-    public bool missileBool; //初期のアイテム状態(アイテムを持っていない)
-
-    public bool BombBool; //初期のアイテム状態(アイテムを持っていない)
-
-    public bool ShildBool; //初期のアイテム状態(アイテムを持っていない)
-}
-
-
 
 public class SaveManager : MonoBehaviour
 {
 
-    public bool missileBool;
+    public bool missileBool = false; //ミサイルを持っているか
 
-    public bool BombBool;
+    public bool bombBool = false; //ボムを持っているか
 
-    public bool ShildBool;
-
-    ItemSaveData itemSaveData = new ItemSaveData();//アイテムセーブデータインスタンスを取得
+    public bool shildBool = false; //シールドを持っているか
 
     private void Awake()
     {
-        missileBool = itemSaveData.missileBool;
-        BombBool = itemSaveData.BombBool;
-        ShildBool = itemSaveData.ShildBool;
+        missileBool = ES3.Load<bool>("missileBool", defaultValue: false);
+        bombBool = ES3.Load<bool>("bombBool", defaultValue: false);
+        shildBool = ES3.Load<bool>("shildBool", defaultValue: false);
+
     }
 
     //アイテムデータをセーブ
-    public void SaveItem()
+    public void SaveItem(int itemNum)
     {
-        StreamWriter writer;
+        if(itemNum == 0)
+        {
+            ES3.Save<bool>("missileBool", true);
+        }
 
-        //ItemSaveData(JSON)に現在の状態を保存する
-        itemSaveData.missileBool = missileBool;
-        itemSaveData.BombBool = BombBool;
-        itemSaveData.ShildBool = ShildBool;
+        if (itemNum == 1)
+        {
+            ES3.Save<bool>("bombBool", true);
+        }
 
-        string jsonstr = JsonUtility.ToJson(itemSaveData);//アイテムセーブデータをJSONに変換
-
-
-        writer = new StreamWriter(Application.dataPath + "/SaveFile/ItemSave.json", false);//falseはデータを上書き
-
-        writer.Write(jsonstr);
-        writer.Flush();
-        writer.Close();
+        if (itemNum == 2)
+        {
+            ES3.Save<bool>("shildBool", true);
+        }
 
     }
-
-    //アイテムデータをロード
-    public void RoadItem()
-    {
-
-        string datastr = "";
-
-        StreamReader reader;
-
-        reader = new StreamReader(Application.dataPath + "/SaveFile/ItemSave.json"); //データロード
-        datastr = reader.ReadToEnd();
-        reader.Close();
-
-        itemSaveData = JsonUtility.FromJson<ItemSaveData>(datastr);
-
-        missileBool = itemSaveData.missileBool;
-        BombBool = itemSaveData.BombBool;
-        ShildBool = itemSaveData.ShildBool;
-    }
-
+    
 }
 

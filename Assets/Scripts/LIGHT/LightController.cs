@@ -8,7 +8,7 @@ public class LightController : MonoBehaviour
 {
     public Light2D fade;
 
-    public GameObject spotLight;
+    //public GameObject spotLight;
 
     //ライトのon、offのbool変数
     public bool fadeOut = false;
@@ -59,11 +59,11 @@ public class LightController : MonoBehaviour
     }
 
     //スポットライトを有効にする関数
-    public void spotLigthOn()
+    /*public void spotLigthOn()
     {
         fade.intensity = 0;
         spotLight.SetActive(true);
-    }
+    }*/
 
     }
 

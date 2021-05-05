@@ -13,13 +13,18 @@ public class SceneController : MonoBehaviour
     //初期の残機数の記録の為の変数
     private int CurrentZanki;
 
-    public LightController lightCon;
+    private LightController lightController;
 
     //タイトルシーン
     string TitleScene = "TitleScene";
 
     private void Start()
     {
+        if(lightController == null)
+        {
+            lightController = GameObject.Find("LIGHT").GetComponent<LightController>();
+        }
+
         //現在のシーン名を取得
         this.SceneName = SceneManager.GetActiveScene().name;
 
@@ -51,7 +56,7 @@ public class SceneController : MonoBehaviour
     private IEnumerator SceneChange(string scene)
     {
         yield return new WaitForSeconds(1f);
-        lightCon.fadeIn = true;
+        lightController.fadeIn = true;
 
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(scene);
@@ -61,7 +66,7 @@ public class SceneController : MonoBehaviour
     private IEnumerator SceneChangeTitle(string scene)
     {
         yield return new WaitForSeconds(4f);
-        lightCon.fadeIn = true;
+        lightController.fadeIn = true;
 
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(scene);

@@ -8,7 +8,8 @@ using DG.Tweening;
 //カメラ制御のコンポーネント
 public class CameraCon : MonoBehaviour
 {
-    public GameObject UFOObj;
+    [SerializeField]
+    private GameObject UFOObj;
 
     Vector3 ufoPos;
 
@@ -25,7 +26,6 @@ public class CameraCon : MonoBehaviour
         if (UFOObj == null)
         {
             this.UFOObj = GameObject.Find("UFO");
-            Debug.Log("nullあり");
         }
 
         came = GetComponent<PixelPerfectCamera>();

@@ -22,22 +22,22 @@ public class ItemGet : MonoBehaviour
             if(ItemNumber == "0")//ミサイルとの接触の場合
             {
                 save.missileBool = true;
-                save.SaveItem();
+                save.SaveItem(0);
                 Destroy(gameObject);
             }
 
             if (ItemNumber == "1")//ボムとの接触の場合
             {
-                save.BombBool = true;
-                save.SaveItem();
+                save.bombBool = true;
+                save.SaveItem(1);
                 Destroy(gameObject);
                 
             }
 
             if (ItemNumber == "2")//シールドとの接触の場合
             {
-                save.ShildBool = true;
-                save.SaveItem();
+                save.shildBool = true;
+                save.SaveItem(2);
                 Destroy(gameObject);
 
             }

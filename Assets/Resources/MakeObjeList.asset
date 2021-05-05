@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2860066027ef4471b4e9e574fb2c31f, type: 3}
+  m_Name: MakeObjeList
+  m_EditorClassIdentifier: 
+  UFO: {fileID: 7666001419186498539, guid: edb7b75efd6ca4abf977890f8df6409c, type: 3}
+  LIGHT: {fileID: 7105041132479263692, guid: e2e0118b9d989449b9079f7cc4e4d283, type: 3}
+  CanvasFADE: {fileID: 6462130774394879170, guid: b6a42336c3aa64b719d2887884d0cd73,
+    type: 3}
+  CanvasNO_FADE: {fileID: 6748604038344874354, guid: d8c032e077c8543f797c0dbe1c380072,
+    type: 3}
+  EventSystem: {fileID: 8656596262185578101, guid: 64aaccb2fd04143b8a342c686c071e14,
+    type: 3}

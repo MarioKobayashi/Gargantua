@@ -11,24 +11,24 @@ public class UFOHealth : MonoBehaviour
     public Sprite UFO_NO_ARMOUR; //UFOのダメージを受けた姿
     public Sprite UFO; //HPMAX時のUFOの姿
     public bool on_damage = false; //ダメージを受けてる最中かどうか
-    public CameraShake shake;
+    private CameraShake shake;
     public GameObject missileBomb; //パーティクルゲームオブジェクト
     [SerializeField] private float mutekiTime = 1.0f;
 
     private void Awake()
     {
         this.Renderer = GetComponent<SpriteRenderer>();
-
-        if(shake == null)
-        {
-            this.shake = GameObject.Find("Main Camera").GetComponent<CameraShake>();
-            Debug.Log("nullあり");
-        }
-
-        
     }
 
-    
+    private void Start()
+    {
+        if(shake == null)
+        {
+            this.shake = GameObject.Find("MainCamera").GetComponent<CameraShake>();
+        }
+    }
+
+
 
     private void Update()
     {

@@ -20,13 +20,4 @@ public class UIController : MonoBehaviour
     {
         zankiText.text = "× " + zanki;
     }
-
-    
-    void Update()
-    {
-        //UFOが消えたらゲームオーバーテキストを表示する
-        GameOverText.SetActive(!UFO.ufo.gameObject.activeSelf && SceneController.zanki < 0);
-    }
-
-    
 }

@@ -13,26 +13,25 @@ public class MakeItemBox : MonoBehaviour
 
     private GameObject item;　//アイテムボックスへ入れるアイテム
 
-    private GameObject itemSave; //ゲームを中断する前に有効だったオブジェクト
-
     Transform parent;//自分自身のトランスフォーム
 
     private string itemName; //現在ItemBoxに入っているアイテムの名称
 
-    
+    public int num;
 
     private void Awake()
     {
-        
-        
-    }
-
-
-    private void Start()
-    {
         parent = this.transform;//自分自身のトランスフォーム(変数へ代入)
-    }
 
+        num = ES3.Load<int>("itemNum", defaultValue: -1); //直前に使っていたアイテムをロード、-1はアイテム無し
+
+        if(num >= 0)
+        {
+            item = Instantiate(itemBoxData.Item[num], transform.position, Quaternion.identity, parent);
+            item.name = itemBoxData.Item[num].name;
+            itemName = item.name;
+        }
+    }
 
     public void NumGet(int num) //アイテム生成
     {
@@ -56,8 +55,15 @@ public class MakeItemBox : MonoBehaviour
         item.name = itemBoxData.Item[num].name;
         itemName = item.name;
 
-        
-        
+        //選択したアイテム番号を記録、簡単なものなので
+        //saveManagerを経由せず、直接ここでセーブとロードをやる
+        ES3.Save<int>("itemNum", num); 
 
     }
+
+    public void NumDestroy() //アイテムボックスにアイテムが何もない事を記録する関数
+    {
+        ES3.Save("itemNum", -1);
+    }
+    
 }
