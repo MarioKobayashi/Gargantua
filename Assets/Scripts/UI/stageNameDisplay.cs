@@ -8,7 +8,7 @@ public class stageNameDisplay : MonoBehaviour
 {
     [SerializeField] private RectTransform rectT = default;
 
-    [SerializeField] private Text StageText; //ステージ名を表示するインスタンス
+    [SerializeField] private Text StageText = null; //ステージ名を表示するインスタンス
 
     private MakeSceneObj makeSceneObj; //makeSceneObjに格納されているstage名を取得するのに必要
 
@@ -46,7 +46,7 @@ public class stageNameDisplay : MonoBehaviour
             .Append(action3)
             .AppendCallback(() =>
             {
-                //gameObject.SetActive(false);
+                gameObject.SetActive(false);
             })
             .SetAutoKill(false)
             .SetLink(gameObject);

@@ -19,21 +19,19 @@ public class MakeSceneObj : MonoBehaviour
 
     private GameObject EventSystem;
 
+    private GameObject SceneController;
+
+    private GameObject SaveManager;
+
+    //参照があるものAwake()でインスタンス化
     private void Awake()
     {
-        
+        this.SaveManager = Instantiate(makeSceneObjData.SaveManager);
+        SaveManager.name = "SaveManager";
     }
 
     private void Start()
     {
-        //UFOをインスタンス化
-        this.UFO = Instantiate(makeSceneObjData.UFO);
-        UFO.name = "UFO";
-
-        //ライトをインスタンス化
-        this.LIGHT = Instantiate(makeSceneObjData.LIGHT);
-        LIGHT.name = "LIGHT";
-
         //フェードキャンバスをインスタンス化
         this.CanvasFADE = Instantiate(makeSceneObjData.CanvasFADE);
         CanvasFADE.name = "Canvas(FADE)";
@@ -45,5 +43,17 @@ public class MakeSceneObj : MonoBehaviour
         //イベントシステムをインスタンス化
         this.EventSystem = Instantiate(makeSceneObjData.EventSystem);
         EventSystem.name = "EventSystem";
+
+        //UFOをインスタンス化
+        this.UFO = Instantiate(makeSceneObjData.UFO);
+        UFO.name = "UFO";
+
+        //ライトをインスタンス化
+        this.LIGHT = Instantiate(makeSceneObjData.LIGHT);
+        LIGHT.name = "LIGHT";
+
+        //シーンコントローラーをインスタンス化
+        this.SceneController = Instantiate(makeSceneObjData.SceneController);
+        SceneController.name = "SceneController";
     }
 }

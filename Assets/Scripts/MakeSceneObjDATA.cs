@@ -16,4 +16,10 @@ public class MakeSceneObjDATA : ScriptableObject
 
     public GameObject EventSystem; //イベントシステム
 
+    public GameObject SceneController; //シーンコントローラー
+
+    public GameObject SaveManager; //セーブマネージャー
+
 }
+
+

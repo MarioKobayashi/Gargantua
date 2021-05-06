@@ -20,3 +20,7 @@ MonoBehaviour:
     type: 3}
   EventSystem: {fileID: 8656596262185578101, guid: 64aaccb2fd04143b8a342c686c071e14,
     type: 3}
+  SceneController: {fileID: 5623295672031113724, guid: e935e14f0d6c44ceda070decba5fa1a7,
+    type: 3}
+  SaveManager: {fileID: 140346801054374336, guid: caf674f529ee94033b2c682b89c2e00f,
+    type: 3}
